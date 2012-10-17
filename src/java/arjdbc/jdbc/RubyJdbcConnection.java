@@ -25,40 +25,7 @@
  ***** END LICENSE BLOCK *****/
 package arjdbc.jdbc;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
-import java.io.StringReader;
-import java.math.BigInteger;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
-import java.sql.Types;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-
-import org.jruby.Ruby;
-import org.jruby.RubyArray;
-import org.jruby.RubyBignum;
-import org.jruby.RubyClass;
-import org.jruby.RubyHash;
-import org.jruby.RubyModule;
-import org.jruby.RubyNumeric;
-import org.jruby.RubyObject;
-import org.jruby.RubyObjectAdapter;
-import org.jruby.RubyString;
-import org.jruby.RubySymbol;
-import org.jruby.RubyTime;
+import org.jruby.*;
 import org.jruby.anno.JRubyMethod;
 import org.jruby.exceptions.RaiseException;
 import org.jruby.javasupport.Java;
@@ -71,6 +38,17 @@ import org.jruby.runtime.ObjectAllocator;
 import org.jruby.runtime.ThreadContext;
 import org.jruby.runtime.builtin.IRubyObject;
 import org.jruby.util.ByteList;
+
+import java.io.*;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Part of our ActiveRecord::ConnectionAdapters::Connection impl.
@@ -108,10 +86,10 @@ public class RubyJdbcConnection extends RubyObject {
     public IRubyObject begin(ThreadContext context) throws SQLException {
         final Ruby runtime = context.getRuntime();
         return (IRubyObject) withConnectionAndRetry(context, new SQLBlock() {
-          public Object call(Connection c) throws SQLException {
-            getConnection(true).setAutoCommit(false);
-            return runtime.getNil();
-          }
+            public Object call(Connection c) throws SQLException {
+                getConnection(true).setAutoCommit(false);
+                return runtime.getNil();
+            }
         });
     }
 
@@ -834,6 +812,8 @@ public class RubyJdbcConnection extends RubyObject {
                 return doubleToRuby(runtime, resultSet, resultSet.getDouble(column));
             case Types.BIGINT:
                 return bigIntegerToRuby(runtime, resultSet, resultSet.getString(column));
+            case Types.DECIMAL:
+                return decimalToRuby(runtime, resultSet, resultSet.getBigDecimal(column));
             default:
                 return stringToRuby(runtime, resultSet, resultSet.getString(column));
             }
@@ -970,6 +950,11 @@ public class RubyJdbcConnection extends RubyObject {
         return RubyString.newUnicodeString(runtime, string);
     }
 
+    protected IRubyObject decimalToRuby(Ruby runtime, ResultSet resultSet, BigDecimal value) throws SQLException, IOException {
+        if (value == null && resultSet.wasNull()) return runtime.getNil();
+
+        return new RubyBigDecimal(runtime, value);
+    }
 
     protected SQLBlock tableLookupBlock(final Ruby runtime,
             final String catalog, final String schemapat,
