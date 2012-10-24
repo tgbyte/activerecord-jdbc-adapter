@@ -4,7 +4,7 @@ $:.push arjdbc_lib unless $:.include?(arjdbc_lib)
 require 'arjdbc/version'
 version = ArJdbc::Version::VERSION
 Gem::Specification.new do |s|
-  s.name        = "activerecord-jdbcmysql-adapter"
+  s.name        = "tgbyte-activerecord-jdbcmysql-adapter"
   s.version     = version
   s.platform    = Gem::Platform::RUBY
   s.authors = ["Nick Sieger, Ola Bini and JRuby contributors"]
@@ -16,11 +16,11 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "lib/active_record/connection_adapters/jdbcmysql_adapter.rb"
   ]
-  s.homepage = %q{https://github.com/jruby/activerecord-jdbc-adapter}
+  s.homepage = %q{https://github.com/tgbyte/activerecord-jdbc-adapter}
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{jruby-extras}
   s.summary = %q{MySQL JDBC adapter for JRuby on Rails.}
 
-  s.add_dependency 'activerecord-jdbc-adapter', "~>#{version}"
-  s.add_dependency 'jdbc-mysql', '~> 5.1.0'
+  s.add_dependency 'tgbyte-activerecord-jdbc-adapter', "~>#{version}"
+  s.add_dependency 'tgbyte-jdbc-mysql', '~> 5.1.0'
 end

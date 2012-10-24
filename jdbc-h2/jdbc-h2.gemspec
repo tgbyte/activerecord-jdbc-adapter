@@ -4,7 +4,7 @@ $LOAD_PATH << File.expand_path('../lib', __FILE__)
 require 'jdbc/h2'
 version = Jdbc::H2::VERSION
 Gem::Specification.new do |s|
-  s.name = %q{jdbc-h2}
+  s.name = %q{tgbyte-jdbc-h2}
   s.version = version
 
   s.authors = ["Nick Sieger, Ola Bini and JRuby contributors"]
@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
     "Rakefile", "README.txt", "LICENSE.txt",
     *Dir["lib/**/*"].to_a
   ]
-  s.homepage = %q{https://github.com/jruby/activerecord-jdbc-adapter}
+  s.homepage = %q{https://github.com/tgbyte/activerecord-jdbc-adapter}
   s.rdoc_options = ["--main", "README.txt"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{jruby-extras}

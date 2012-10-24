@@ -4,7 +4,7 @@ $LOAD_PATH << File.expand_path('../lib', __FILE__)
 require 'jdbc/sqlite3'
 version = Jdbc::SQLite3::VERSION
 Gem::Specification.new do |s|
-  s.name = %q{jdbc-sqlite3}
+  s.name = %q{tgbyte-jdbc-sqlite3}
   s.version = version
 
   s.authors = ["Nick Sieger, Ola Bini and JRuby contributors"]
@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
     *Dir["lib/**/*"].to_a
   ]
 
-  s.homepage = %q{https://github.com/jruby/activerecord-jdbc-adapter}
+  s.homepage = %q{https://github.com/tgbyte/activerecord-jdbc-adapter}
   s.rdoc_options = ["--main", "README.txt"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{jruby-extras}

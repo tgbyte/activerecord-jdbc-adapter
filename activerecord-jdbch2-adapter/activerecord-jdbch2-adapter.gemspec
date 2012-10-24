@@ -4,7 +4,7 @@ $:.push arjdbc_lib unless $:.include?(arjdbc_lib)
 require 'arjdbc/version'
 version = ArJdbc::Version::VERSION
 Gem::Specification.new do |s|
-  s.name        = "activerecord-jdbch2-adapter"
+  s.name        = "tgbyte-activerecord-jdbch2-adapter"
   s.version     = version
   s.platform    = Gem::Platform::RUBY
   s.authors = ["Nick Sieger, Ola Bini and JRuby contributors"]
@@ -16,11 +16,11 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "lib/active_record/connection_adapters/jdbch2_adapter.rb"
   ]
-  s.homepage = %q{https://github.com/jruby/activerecord-jdbc-adapter}
+  s.homepage = %q{https://github.com/tgbyte/activerecord-jdbc-adapter}
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{jruby-extras}
   s.summary = %q{H2 JDBC adapter for JRuby on Rails.}
 
-  s.add_dependency 'activerecord-jdbc-adapter', "~>#{version}"
-  s.add_dependency 'jdbc-h2', '~> 1.3.0'
+  s.add_dependency 'tgbyte-activerecord-jdbc-adapter', "~>#{version}"
+  s.add_dependency 'tgbyte-jdbc-h2', '~> 1.3.0'
 end
