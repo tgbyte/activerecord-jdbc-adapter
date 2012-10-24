@@ -14,7 +14,7 @@ task :default => [:jar, :test]
 task :build => :jar
 task :install => :jar
 
-ADAPTERS = %w[derby h2 hsqldb mssql mysql postgresql sqlite3].map {|a| "tgbyte-activerecord-jdbc#{a}-adapter" }
+ADAPTERS = %w[derby h2 hsqldb mssql mysql postgresql sqlite3].map {|a| "activerecord-jdbc#{a}-adapter" }
 DRIVERS  = %w[derby h2 hsqldb jtds mysql postgres sqlite3].map {|a| "jdbc-#{a}" }
 
 def rake(args)
