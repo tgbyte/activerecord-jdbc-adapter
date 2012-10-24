@@ -22,5 +22,5 @@ Gem::Specification.new do |s|
   s.summary = %q{MS_SQL JDBC adapter for JRuby on Rails.}
 
   s.add_dependency 'tgbyte-activerecord-jdbc-adapter', "~>#{version}"
-  s.add_dependency 'tgbyte-jdbc-jtds', '~> 1.2.0'
+  s.add_dependency 'jdbc-jtds', '~> 1.2.0'
 end

@@ -22,5 +22,5 @@ Gem::Specification.new do |s|
   s.summary = %q{H2 JDBC adapter for JRuby on Rails.}
 
   s.add_dependency 'tgbyte-activerecord-jdbc-adapter', "~>#{version}"
-  s.add_dependency 'tgbyte-jdbc-h2', '~> 1.3.0'
+  s.add_dependency 'jdbc-h2', '~> 1.3.0'
 end

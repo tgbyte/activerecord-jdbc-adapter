@@ -22,6 +22,6 @@ Gem::Specification.new do |s|
   s.summary = %q{Sqlite3 JDBC adapter for JRuby on Rails.}
 
   s.add_dependency 'tgbyte-activerecord-jdbc-adapter', "~>#{version}"
-  s.add_dependency 'tgbyte-jdbc-sqlite3', '~> 3.7.2'
+  s.add_dependency 'jdbc-sqlite3', '~> 3.7.2'
 end
 

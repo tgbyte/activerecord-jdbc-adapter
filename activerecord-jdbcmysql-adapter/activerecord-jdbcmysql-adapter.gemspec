@@ -22,5 +22,5 @@ Gem::Specification.new do |s|
   s.summary = %q{MySQL JDBC adapter for JRuby on Rails.}
 
   s.add_dependency 'tgbyte-activerecord-jdbc-adapter', "~>#{version}"
-  s.add_dependency 'tgbyte-jdbc-mysql', '~> 5.1.0'
+  s.add_dependency 'jdbc-mysql', '~> 5.1.0'
 end
